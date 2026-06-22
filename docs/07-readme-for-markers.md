@@ -20,14 +20,14 @@ The root-level `README.md` provides a concise public overview of the project; th
 
 ## 3. How to Run the Project
 
-Markers who wish to run the application are advised to consult **03-installation-and-setup.md** before opening the Unity project.[file:94] That document explains:
+Markers who wish to run the application are advised to consult **03-installation-and-setup.md** before opening the Unity project. That document explains:
 
 - The required Unity version and modules.  
 - How to add the project in Unity Hub and open it correctly.  
 - The one-shot setup menu items that must be run for each scene.  
 - How to run the project in Play mode from the authentication scene.  
 - How to build a Windows executable.  
-- Common issues (for example, TextMesh Pro resource import, input system configuration, missing scripts) and their documented fixes.[file:94]
+- Common issues (for example, TextMesh Pro resource import, input system configuration, missing scripts) and their documented fixes.
 
 Because the project depends on these setup steps, running the editor without reference to this guide may lead to misleading errors or partially configured scenes.
 
@@ -35,7 +35,7 @@ Because the project depends on these setup steps, running the editor without ref
 
 The internal documents present two complementary perspectives:
 
-- **Intended architecture and behaviour** – as described in the overview, technical explanation, and installation guide.[file:92][file:93][file:94]  
+- **Intended architecture and behaviour** – as described in the overview, technical explanation, and installation guide.  
 - **Observed runtime behaviour** – as described in the development log and testing record, including evidence that some aspects of the implementation (notably visual clarity, flashcard flow, and summary statistics) do not yet fully match the intended design.
 
 This distinction is deliberate. The repository is meant to show both the conceptual design of the system and the practical difficulties encountered when implementing and testing it within the constraints of the project timeframe.
