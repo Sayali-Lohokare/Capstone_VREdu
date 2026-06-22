@@ -58,7 +58,11 @@ The technical explanation states that completing a station should trigger flashc
 
 The observed summary output showing zero attempted flashcards raises concern that this expected sequence did not complete correctly during testing. In practical terms, either the flashcard stage failed to appear, failed to register learner activity, or failed to write results into the data model before the application moved to its completion screen. This is an important issue because it affects both learner reinforcement and the credibility of the final statistics.
 
-## 10. Interpretation of the Observed Failures
+## 10 Runtime Visual Failures
+
+Figure 1 (docs/images/overlap.png) illustrates the overlapping text problem observed at one of the sorting stations. Multiple blue text objects are rendered in front of the instruction board, making the algorithm description and key prompts largely unreadable.
+
+## 11. Interpretation of the Observed Failures
 
 Taken together, the issues observed during testing point to a mismatch between intended scene logic and the actual runtime state of the project. The documented architecture presents a coherent sequence of login, classroom interaction, algorithm progression, flashcards, and summary reporting.[file:92][file:93]
 
@@ -71,19 +75,19 @@ The runtime evidence, however, suggests that the project currently experiences a
 
 This does not mean the entire project concept is invalid. Rather, it indicates that integration between setup, visual presentation, interaction flow, and end-of-session reporting still requires refinement.
 
-## 11. Academic Reflection
+## 12. Academic Reflection
 
 From a software engineering perspective, these failures are valuable to document because they demonstrate that the project has progressed beyond pure design and into meaningful implementation testing. The observed faults were not hypothetical concerns; they were practical problems encountered while attempting to execute the system as a learner would.
 
 Including such evidence in the documentation strengthens the academic credibility of the project because it shows reflective development practice. Instead of presenting only intended features, the documentation acknowledges where setup broke, where runtime behaviour broke, where the visual layer reduced usability, and where the final reporting logic failed to match the expected educational workflow.
 
-## 12. Implications for Further Work
+## 13. Implications for Further Work
 
 The immediate priority for further development should be improving runtime stability and verifying the connection between scene setup, station interaction, flashcard completion, and summary generation. In particular, the rendering of station text and visual overlays should be reviewed first, because unreadable instructional content directly prevents meaningful educational use.
 
 A second priority is validating the session pipeline end to end: station entry, learner action logging, flashcard triggering, `SessionData` persistence, and summary display. Until those links are reliable, the system cannot fully demonstrate the reflective learning cycle described in the design documents.[file:93]
 
-## 13. Role of this Document
+## 14. Role of this Document
 
 This development log should be read as a formal record of the project’s trial-and-error phase. It captures the difference between intended design and observed behaviour and therefore serves as evidence of testing, debugging, and reflective analysis within the wider dissertation or capstone report.
 
