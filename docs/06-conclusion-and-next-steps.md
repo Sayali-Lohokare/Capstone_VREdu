@@ -77,4 +77,4 @@ From a dissertation perspective, this set of documents can be referenced directl
 
 ## 8. Final Remarks
 
-In its current form, Capstone_VREdu represents a substantial piece of system design and implementation work that is closely aligned with the learning objectives of teaching algorithms in an interactive environment. While the project still requires technical refinement to fully realise its potential, the underlying architecture, documentation, and reflective analysis provide a strong foundation for continued development and formal academic reporting.[file:92][file:93][file:94]
+In its current form, Capstone_VREdu represents a substantial piece of system design and implementation work that is closely aligned with the learning objectives of teaching algorithms in an interactive environment. While the project still requires technical refinement to fully realise its potential, the underlying architecture, documentation, and reflective analysis provide a strong foundation for continued development and formal academic reporting.
