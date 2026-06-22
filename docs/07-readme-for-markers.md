@@ -10,10 +10,10 @@ The aim of this document is to orient markers and supervisors so that they can q
 
 The documentation in the `docs/` folder is organised as a numbered sequence. The intended reading order is:
 
-1. **02-technical-explanation.md** – Detailed description of how the system is designed to work internally, including scene flow, algorithm stations, feedback pipeline, flashcards, session data, and LLM integration.[file:93]  
-2. **03-installation-and-setup.md** – Practical steps for importing the Unity project, configuring required packages, running editor setup utilities, building the application, and resolving common setup issues.[file:94]  
+1. **02-technical-explanation.md** – Detailed description of how the system is designed to work internally, including scene flow, algorithm stations, feedback pipeline, flashcards, session data, and LLM integration.
+2. **03-installation-and-setup.md** – Practical steps for importing the Unity project, configuring required packages, running editor setup utilities, building the application, and resolving common setup issues.  
 3. **04-development-log-and-issues.md** – Narrative of the development process with particular emphasis on setup problems, visual failures (such as overlapping text and blurred UI), and inconsistencies between intended and observed behaviour.  
-4. **05-testing-and-observed-results.md** – Summary of the testing activities carried out, comparing expected functionality with actual outputs and highlighting the impact of current defects on the learner experience.[file:92][file:93][file:94]  
+4. **05-testing-and-observed-results.md** – Summary of the testing activities carried out, comparing expected functionality with actual outputs and highlighting the impact of current defects on the learner experience.  
 5. **06-conclusion-and-next-steps.md** – Overall reflection on achievements, limitations, and priority areas for future work, including both technical and pedagogical recommendations.
 
 The root-level `README.md` provides a concise public overview of the project; the numbered documents in `docs/` provide the more detailed academic narrative that supports the dissertation.
