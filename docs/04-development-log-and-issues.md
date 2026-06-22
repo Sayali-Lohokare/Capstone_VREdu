@@ -8,29 +8,29 @@ In an academic context, this form of reflective documentation is important becau
 
 ## 2. Intended Behaviour
 
-According to the internal project documentation, the expected system flow is structured around three scenes: an authentication scene, a classroom scene, and a session summary scene. After login, the learner should enter the classroom, approach any of the eight algorithm stations, press the interaction key to begin at Level 1, perform algorithm actions through keyboard input, receive adaptive feedback, complete flashcard tasks after level completion, and later view an accurate summary of the session.[file:92][file:93]
+According to the internal project documentation, the expected system flow is structured around three scenes: an authentication scene, a classroom scene, and a session summary scene. After login, the learner should enter the classroom, approach any of the eight algorithm stations, press the interaction key to begin at Level 1, perform algorithm actions through keyboard input, receive adaptive feedback, complete flashcard tasks after level completion, and later view an accurate summary of the session.
 
-The same documentation states that the classroom stations should display coloured 3D array blocks together with clear instructional text, world-space prompts, and algorithm-specific keyboard controls. It also states that session statistics should only appear after meaningful interaction has been recorded in `SessionData`.[file:92][file:93]
+The same documentation states that the classroom stations should display coloured 3D array blocks together with clear instructional text, world-space prompts, and algorithm-specific keyboard controls. It also states that session statistics should only appear after meaningful interaction has been recorded in `SessionData`.
 
 ## 3. Development Context
 
-During the practical build and run process, the system did not always behave in accordance with its intended architecture. Although the setup utilities, scene order, and runtime flow were documented, the testing process revealed several failures that affected scene preparation, runtime usability, visual presentation, and the final summary output.[file:93][file:94]
+During the practical build and run process, the system did not always behave in accordance with its intended architecture. Although the setup utilities, scene order, and runtime flow were documented, the testing process revealed several failures that affected scene preparation, runtime usability, visual presentation, and the final summary output.
 
 These issues emerged not only during initial setup, but also after the project had already been imported and partially configured. As a result, the development process involved repeated attempts to run the scenes, test station behaviour, inspect what was appearing on screen, and determine whether faults were caused by setup configuration, scene state, UI placement, or logic errors.
 
 ## 4. Trial-and-Error Process
 
-The project was approached by following the documented setup path: importing the Unity project, allowing packages to resolve, opening the required scenes, and running the provided one-shot editor setup utilities for authentication, classroom stations, flashcards, repositioning, and summary preparation.[file:94]
+The project was approached by following the documented setup path: importing the Unity project, allowing packages to resolve, opening the required scenes, and running the provided one-shot editor setup utilities for authentication, classroom stations, flashcards, repositioning, and summary preparation.
 
-After setup, the project was run in Play mode to test the full intended user flow. The testing then shifted into a trial-and-error cycle in which the scene was entered, stations were approached, keyboard interaction was attempted, and the resulting runtime behaviour was compared against the expected flow described in the documentation.[file:93][file:94]
+After setup, the project was run in Play mode to test the full intended user flow. The testing then shifted into a trial-and-error cycle in which the scene was entered, stations were approached, keyboard interaction was attempted, and the resulting runtime behaviour was compared against the expected flow described in the documentation.
 
 Where the observed behaviour did not match the intended design, the process involved repeating setup actions, re-running scenes, checking whether stations had been positioned correctly, observing whether interaction prompts appeared, and determining whether the visible issues were local to one station or system-wide.
 
 ## 5. Setup-Related Difficulties
 
-One of the main challenges during development was that successful import and scene preparation did not automatically guarantee correct runtime behaviour. The project includes many setup actions for the classroom scene, including station creation, UI generation, flashcard linking, repositioning, and content creation. This means that if any setup step is incomplete, misapplied, or visually inconsistent, the resulting runtime scene can appear partially broken even when the project technically opens.[file:94]
+One of the main challenges during development was that successful import and scene preparation did not automatically guarantee correct runtime behaviour. The project includes many setup actions for the classroom scene, including station creation, UI generation, flashcard linking, repositioning, and content creation. This means that if any setup step is incomplete, misapplied, or visually inconsistent, the resulting runtime scene can appear partially broken even when the project technically opens.
 
-A related challenge is that the project documentation assumes that the one-shot setup utilities will configure the classroom correctly and idempotently. In practice, the visual and interaction results observed during testing suggest that the classroom scene could still enter a broken or unstable state even after setup had apparently completed, which made it necessary to verify the results through repeated execution rather than relying on configuration alone.[file:94]
+A related challenge is that the project documentation assumes that the one-shot setup utilities will configure the classroom correctly and idempotently. In practice, the visual and interaction results observed during testing suggest that the classroom scene could still enter a broken or unstable state even after setup had apparently completed, which made it necessary to verify the results through repeated execution rather than relying on configuration alone.
 
 ## 6. Runtime Visual Failures
 
@@ -42,19 +42,19 @@ A further visual issue was that text in several areas appeared blurred, unclear,
 
 ## 7. Station Interaction Problems
 
-The internal documentation explains that each station should begin at Level 1 when the learner approaches and presses the interaction key. It also describes a structured station process in which the learner performs algorithm actions, receives feedback, and progresses after successful completion.[file:93]
+The internal documentation explains that each station should begin at Level 1 when the learner approaches and presses the interaction key. It also describes a structured station process in which the learner performs algorithm actions, receives feedback, and progresses after successful completion.
 
 However, practical testing showed that the visible station state was not always coherent enough to support this process correctly. In the observed runtime condition, the station interface could appear visually corrupted, making it difficult to determine whether the current interaction state, highlighted elements, or instruction prompts were functioning as intended. This means that even when the core logic might still have been active, the usability of the station was significantly reduced by the rendering faults.
 
 ## 8. Problems at the End of a Session
 
-Another major issue was the behaviour of the session completion screen. According to the intended design, the summary scene should present a meaningful record of the learner’s activity, including algorithms attempted, levels reached, mistakes made, hints used, flashcard results, and reflection prompts generated from the session data.[file:92][file:93]
+Another major issue was the behaviour of the session completion screen. According to the intended design, the summary scene should present a meaningful record of the learner’s activity, including algorithms attempted, levels reached, mistakes made, hints used, flashcard results, and reflection prompts generated from the session data.
 
-During testing, however, the summary interface displayed a contradictory or incomplete state. The session completion screen indicated that no algorithms had been attempted and that flashcard performance was zero across zero attempted items, even though the session had already moved into a completion state. This suggests that the transition into the summary phase was not correctly aligned with the actual learner activity or that `SessionData` was not being populated, preserved, or interpreted correctly before the summary screen was shown.[file:92][file:93]
+During testing, however, the summary interface displayed a contradictory or incomplete state. The session completion screen indicated that no algorithms had been attempted and that flashcard performance was zero across zero attempted items, even though the session had already moved into a completion state. This suggests that the transition into the summary phase was not correctly aligned with the actual learner activity or that `SessionData` was not being populated, preserved, or interpreted correctly before the summary screen was shown.
 
 ## 9. Flashcard and Completion Concerns
 
-The technical explanation states that completing a station should trigger flashcard activity, and that progression through algorithm levels depends partly on the flashcard outcome. Flashcard results are also expected to contribute to the final session summary.[file:93]
+The technical explanation states that completing a station should trigger flashcard activity, and that progression through algorithm levels depends partly on the flashcard outcome. Flashcard results are also expected to contribute to the final session summary.
 
 The observed summary output showing zero attempted flashcards raises concern that this expected sequence did not complete correctly during testing. In practical terms, either the flashcard stage failed to appear, failed to register learner activity, or failed to write results into the data model before the application moved to its completion screen. This is an important issue because it affects both learner reinforcement and the credibility of the final statistics.
 
@@ -64,7 +64,7 @@ Figure 1 (docs/images/overlap.png) illustrates the overlapping text problem obse
 
 ## 11. Interpretation of the Observed Failures
 
-Taken together, the issues observed during testing point to a mismatch between intended scene logic and the actual runtime state of the project. The documented architecture presents a coherent sequence of login, classroom interaction, algorithm progression, flashcards, and summary reporting.[file:92][file:93]
+Taken together, the issues observed during testing point to a mismatch between intended scene logic and the actual runtime state of the project. The documented architecture presents a coherent sequence of login, classroom interaction, algorithm progression, flashcards, and summary reporting.
 
 The runtime evidence, however, suggests that the project currently experiences at least four practical categories of failure:
 
@@ -85,10 +85,10 @@ Including such evidence in the documentation strengthens the academic credibilit
 
 The immediate priority for further development should be improving runtime stability and verifying the connection between scene setup, station interaction, flashcard completion, and summary generation. In particular, the rendering of station text and visual overlays should be reviewed first, because unreadable instructional content directly prevents meaningful educational use.
 
-A second priority is validating the session pipeline end to end: station entry, learner action logging, flashcard triggering, `SessionData` persistence, and summary display. Until those links are reliable, the system cannot fully demonstrate the reflective learning cycle described in the design documents.[file:93]
+A second priority is validating the session pipeline end to end: station entry, learner action logging, flashcard triggering, `SessionData` persistence, and summary display. Until those links are reliable, the system cannot fully demonstrate the reflective learning cycle described in the design documents.
 
 ## 14. Role of this Document
 
 This development log should be read as a formal record of the project’s trial-and-error phase. It captures the difference between intended design and observed behaviour and therefore serves as evidence of testing, debugging, and reflective analysis within the wider dissertation or capstone report.
 
-For supervisor review, this document is particularly useful because it shows that the repository is not only storing the final concept, but also preserving the engineering reality of building, running, observing, and diagnosing the system through iterative development.[file:146][file:148]
+For supervisor review, this document is particularly useful because it shows that the repository is not only storing the final concept, but also preserving the engineering reality of building, running, observing, and diagnosing the system through iterative development.
