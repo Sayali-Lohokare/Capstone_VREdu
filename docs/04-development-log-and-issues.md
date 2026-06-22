@@ -60,7 +60,7 @@ The observed summary output showing zero attempted flashcards raises concern tha
 
 ## 10 Runtime Visual Failures
 
-Figure 1 (docs/images/overlap.png) illustrates the overlapping text problem observed at one of the sorting stations. Multiple blue text objects are rendered in front of the instruction board, making the algorithm description and key prompts largely unreadable.
+Figure 1 [overlap.png](./images/overlap.png) illustrates the overlapping text problem observed at one of the sorting stations. Multiple blue text objects are rendered in front of the instruction board, making the algorithm description and key prompts largely unreadable.
 
 ## 11. Interpretation of the Observed Failures
 
