@@ -70,6 +70,4 @@ When assessing this project, it may be helpful to consider:
 
 The documentation is deliberately explicit about these limitations so that the project can be evaluated fairly in terms of both what has been achieved and what remains to be done.
 
-## 7. Contact and Support
 
-Any questions about how to navigate the repository, run the project, or interpret the documentation can be directed to the student during supervision or viva. The documents in `docs/` are intended to act as a self-contained guide for markers, but they can also be used as supporting material for more detailed discussion during assessment.
