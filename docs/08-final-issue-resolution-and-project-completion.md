@@ -30,7 +30,7 @@ The tutor functionality was tested again after importing an updated project arch
 
 ![LLM API-key configuration warning](../llm-api-key-warning.jpeg)
 
-*Figure 5. Unity warning concerning the recognised format of the configured LLM API key.*
+*Figure 1. Unity warning concerning the recognised format of the configured LLM API key.*
 
 A separate console warning also indicated that the configured LLM API key format was not recognised and that the system was falling back to a built-in key. This was recorded as an additional configuration observation. It was considered separately from the controller-input conflict because it concerned external tutor-service configuration rather than the routing of keyboard input.
 
@@ -50,7 +50,7 @@ The warning confirmed that a classroom keyboard event was being received while t
 
 ![GameState Boot keyboard warning](../gamestate-boot-warning.jpeg)
 
-*Figure 4. Unity console warning showing classroom input received while the game state was Boot.*
+*Figure 2. Unity console warning showing classroom input received while the game state was Boot.*
 
 3.4 Checking persistent objects
 The Unity hierarchy was inspected and a DontDestroyOnLoad object was observed in the classroom scene. The project architecture uses persistent managers to preserve session and application state between scenes, but persistent controllers can create conflicts if more than one instance exists or if a controller continues to receive input after its scene is no longer active.
@@ -67,13 +67,13 @@ The Unity hierarchy was inspected during troubleshooting to identify the active 
 
 ![Classroom hierarchy during investigation](../classroom-hierarchy.jpeg)
 
-*Figure 2. Classroom hierarchy inspected during the final input-conflict investigation.*
+*Figure 3. Classroom hierarchy inspected during the final input-conflict investigation.*
 
 The investigation also identified a `DontDestroyOnLoad` object. Because persistent objects can continue across scene transitions, this object was considered when checking whether controllers or input handlers were surviving beyond their intended scene state.
 
 ![DontDestroyOnLoad object in Unity hierarchy](../persistent-object.jpeg)
 
-*Figure 3. Persistent `DontDestroyOnLoad` object observed while investigating scene and input state.*
+*Figure 4. Persistent `DontDestroyOnLoad` object observed while investigating scene and input state.*
 
 The conflict caused keyboard events to be processed in an incorrect application state. As a result:
 
@@ -113,7 +113,7 @@ The classroom was retested through the Linear Search station after the correctio
 
 ![Linear Search station operating at Level 2](../linear-search-working.jpeg)
 
-*Figure 1. Linear Search station operating at Level 2 after the final correction.*
+*Figure 5. Linear Search station operating at Level 2 after the final correction.*
 
 The authentication flow was also retested after the fix. Logout and login behaviour was checked again to ensure that the correction did not resolve the tutor while leaving the scene-management problem active.
 
