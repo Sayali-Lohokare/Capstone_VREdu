@@ -69,7 +69,7 @@ The Unity hierarchy was inspected during troubleshooting to identify the active 
 
 The investigation also identified a `DontDestroyOnLoad` object. Because persistent objects can continue across scene transitions, this object was considered when checking whether controllers or input handlers were surviving beyond their intended scene state.
 
-![DontDestroyOnLoad object in Unity hierarchy](../persistent-dontdestroyonload.jpeg)
+![DontDestroyOnLoad object in Unity hierarchy](../persistent-object.jpeg)
 
 *Figure 3. Persistent `DontDestroyOnLoad` object observed while investigating scene and input state.*
 
