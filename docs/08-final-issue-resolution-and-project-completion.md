@@ -28,6 +28,12 @@ The tutor shortcut was pressed while the user was in the classroom window. No tu
 
 The tutor functionality was tested again after importing an updated project archive. The result remained unsuccessful, so the problem was not treated as a simple import failure.
 
+A separate console warning also indicated that the configured LLM API key format was not recognised and that the system was falling back to a built-in key. This was recorded as an additional configuration observation. It was considered separately from the controller-input conflict because it concerned external tutor-service configuration rather than the routing of keyboard input.
+
+![LLM API-key configuration warning](../llm-api-key-warning.jpeg)
+
+*Figure 5. Unity warning concerning the recognised format of the configured LLM API key.*
+
 3.2 Re-importing the project
 A new project archive was supplied and the previous extracted folder was removed before importing the replacement version. This was intended to eliminate stale files, outdated scripts, duplicated objects, or cached configuration from the earlier project state.
 
@@ -37,6 +43,12 @@ After the replacement project was imported, the tutor was tested again. Although
 The Unity console displayed a message indicating that a classroom-related key event had been received while the current game state was Boot rather than Classroom. This was an important diagnostic clue because it showed that keyboard input was reaching a controller at the wrong time in the application lifecycle.
 
 The warning suggested that the problem was related to state management and input ownership rather than only to the visual tutor panel.
+
+The warning confirmed that a classroom keyboard event was being received while the application was in the `Boot` state rather than the expected `Classroom` state. This was treated as evidence of incorrect input routing or competing controller dependencies.
+
+![GameState Boot keyboard warning](../gamestate-boot-warning.jpeg)
+
+*Figure 4. Unity console warning showing classroom input received while the game state was Boot.*
 
 3.4 Checking persistent objects
 The Unity hierarchy was inspected and a DontDestroyOnLoad object was observed in the classroom scene. The project architecture uses persistent managers to preserve session and application state between scenes, but persistent controllers can create conflicts if more than one instance exists or if a controller continues to receive input after its scene is no longer active.
@@ -48,6 +60,18 @@ Logout and login were tested separately from the tutor shortcut. These tests sho
 
 4. Root Cause
 The final diagnosis was that the classroom and summary controllers were overlapping in their handling of keyboard input. In particular, both controllers had dependencies associated with the T and Escape keys. This created ambiguity over which controller should respond when those keys were pressed.
+
+The Unity hierarchy was inspected during troubleshooting to identify the active classroom managers, algorithm stations, UI objects, and tutor-related components. This review was necessary to establish whether more than one controller could be responding to shared keyboard events.
+
+![Classroom hierarchy during investigation](../classroom-hierarchy.jpeg)
+
+*Figure 2. Classroom hierarchy inspected during the final input-conflict investigation.*
+
+The investigation also identified a `DontDestroyOnLoad` object. Because persistent objects can continue across scene transitions, this object was considered when checking whether controllers or input handlers were surviving beyond their intended scene state.
+
+![DontDestroyOnLoad object in Unity hierarchy](../persistent-dontdestroyonload.jpeg)
+
+*Figure 3. Persistent `DontDestroyOnLoad` object observed while investigating scene and input state.*
 
 The conflict caused keyboard events to be processed in an incorrect application state. As a result:
 
@@ -82,6 +106,12 @@ Closing the temporary quick-assist troubleshooting process after the corrected b
 
 6. Verification After the Fix
 After the controller dependency was removed, the tutor began working correctly. The corrected result confirmed that the failure was not caused by the overall LLM design, the classroom scene, or the API configuration alone. Instead, the main cause was the conflicting input dependency between controllers.
+
+The classroom was retested through the Linear Search station after the correction. The station displayed Level 2, the target value, the array elements, the available action controls, and the keyboard-shortcut panel. This demonstrated that the classroom interaction environment remained operational after the final input-dependency correction.
+
+![Linear Search station operating at Level 2](../linear-search-working.jpeg)
+
+*Figure 1. Linear Search station operating at Level 2 after the final correction.*
 
 The authentication flow was also retested after the fix. Logout and login behaviour was checked again to ensure that the correction did not resolve the tutor while leaving the scene-management problem active.
 
