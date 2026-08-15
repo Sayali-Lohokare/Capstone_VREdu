@@ -28,11 +28,13 @@ The tutor shortcut was pressed while the user was in the classroom window. No tu
 
 The tutor functionality was tested again after importing an updated project archive. The result remained unsuccessful, so the problem was not treated as a simple import failure.
 
-A separate console warning also indicated that the configured LLM API key format was not recognised and that the system was falling back to a built-in key. This was recorded as an additional configuration observation. It was considered separately from the controller-input conflict because it concerned external tutor-service configuration rather than the routing of keyboard input.
-
 ![LLM API-key configuration warning](../llm-api-key-warning.jpeg)
 
 *Figure 5. Unity warning concerning the recognised format of the configured LLM API key.*
+
+A separate console warning also indicated that the configured LLM API key format was not recognised and that the system was falling back to a built-in key. This was recorded as an additional configuration observation. It was considered separately from the controller-input conflict because it concerned external tutor-service configuration rather than the routing of keyboard input.
+
+
 
 3.2 Re-importing the project
 A new project archive was supplied and the previous extracted folder was removed before importing the replacement version. This was intended to eliminate stale files, outdated scripts, duplicated objects, or cached configuration from the earlier project state.
